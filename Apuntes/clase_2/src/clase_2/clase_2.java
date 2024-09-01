@@ -1,7 +1,11 @@
 package clase_2;
+import model.Estudiante;
 
 public class clase_2 {
-
+    enum DiaDeLaSemana {
+    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
+    }
+    
     public static void main(String[] args) {
 
         // Variables
@@ -48,9 +52,6 @@ public class clase_2 {
         System.out.println(diaDeLaSemana);
 
         
-        enum DiaDeLaSemana {
-        LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
-        }
 
         DiaDeLaSemana diaEnum = DiaDeLaSemana.MARTES;
         
@@ -62,6 +63,27 @@ public class clase_2 {
             default -> System.out.println("Dia desconocido");
         }
         
+        int nota = 85;
+        String calificacion = switch (nota / 10) {
+            case 10, 9 -> "A";
+            case 8 -> "B";
+            case 7 -> "C";
+            case 6 -> "D";
+            default -> "F";
+        };
+
+        System.out.println("La calificación es: " + calificacion);
         
+        int i = 1;
+        while (i <= 5){
+            System.out.println(i);
+            i++;
+        }
+        
+        Estudiante estudiante = new Estudiante("Naza", "Cruz", 19, "Programacion II", 8);
+        System.out.println("");
+
+        System.out.println(estudiante);
+        System.out.println(estudiante.mostrarInformacion());
     }
 }

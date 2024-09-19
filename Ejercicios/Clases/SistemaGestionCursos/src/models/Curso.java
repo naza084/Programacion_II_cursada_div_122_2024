@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package models;
+
 import java.util.ArrayList;
 
 /**
@@ -37,7 +38,7 @@ public class Curso {
         this.codigo = codigo;
         this.capacidad = capacidad;
         this.categoria = categoria;
-        this.estudiantesInscriptos = null;
+        this.estudiantesInscriptos = new ArrayList<>();
     }
 
     public void setNombre(String nombre) {
@@ -91,12 +92,11 @@ public class Curso {
                 System.out.println("El estudiante ya está inscrito.");
             }
         } else {
-            System.out.println("La clase ha alcanzado su capacidad máxima.");
+            System.out.println("La clase ha alcanzado su capacidad maxima.");
         }
 
     }
 
-    
     // removerEstudiante(Estudiante estudiante): void
     // elimina un estudiante de la lista.
     public void removerEstudiante(Estudiante estudiante) {
@@ -109,14 +109,25 @@ public class Curso {
         }
 
     }
-    
+
     // mostrarInformacion(): void
     // imprime en consola el nombre del curso, código, capacidad, categoría, y la lista de los estudiantes inscritos.
-    public void mostrarInformacion(){
-        String mensaje = "Curso{" + "\nnombre: " + nombre + "\ncodigo: " + codigo + "\ncapacidad: " + capacidad + "\ncategoria: " + categoria + "\n estudiantes inscriptos: " + estudiantesInscriptos + '}';
+    public void mostrarInformacion() {
+        String mensaje = "Curso: " + nombre + " | Codigo: " + codigo + " | Capacidad: " + capacidad + " | Categoria: " + categoria.getNombre() + "| Estudiantes inscriptos: " + estudiantesInscriptos;
         System.out.println(mensaje);
     }
 
+    // calificarCurso(double calificacion): void
+    // almacena y muestra la caliﬁcación promedio del curso
+    public void calificarCurso(double calificacion) {
+        System.out.println("La calificacion promedio del " + nombre + " es " + calificacion + ".");
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" + "nombre = " + nombre + ", categoria = " + categoria.getNombre() + '}';
+    }
+    
     
 
 }

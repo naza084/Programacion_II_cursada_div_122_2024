@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package models;
+
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,7 @@ Estudiante
 + mostrarInformacion(): void
  */
 public class Estudiante {
-    
+
     private String nombre;
     private String matricula;
     private ArrayList<Curso> cursosInscritos;
@@ -29,7 +30,7 @@ public class Estudiante {
     public Estudiante(String nombre, String matricula) {
         this.nombre = nombre;
         this.matricula = matricula;
-        this.cursosInscritos = null;
+        this.cursosInscritos = new ArrayList<>();
     }
 
     public void setNombre(String nombre) {
@@ -55,16 +56,35 @@ public class Estudiante {
     public ArrayList<Curso> getCursosInscritos() {
         return cursosInscritos;
     }
-    
-    // TODO: preguntarle despues a franco como hizo lo de calificarCurso de la clase curso
-    // y las validaciones de inscribirse en curso
-    
+
     // inscribirseEnCurso(Curso curso): void
     // añade un curso a la lista de cursos inscritos.
-    // TODO: aca irian las mismas validaciones que inscribir estudiante, preguntarle a franco de eso
-    // sino hacerlo igual, despues de esto hacer las pruebas en main y empezar a hacer el ejercicio de gta
-    
+    public void inscribirseEnCurso(Curso curso) {
+
+        if (curso.getEstudiantesInscriptos().size() < curso.getCapacidad()) {
+            if (!curso.getEstudiantesInscriptos().contains(this)) {
+                cursosInscritos.add(curso);
+                curso.getEstudiantesInscriptos().add(this);
+            } else {
+                System.out.println("El estudiante ya está inscrito.");
+            }
+        } else {
+            System.out.println("La clase ha alcanzado su capacidad maxima.");
+        }
+    }
+
     // mostrarInformacion():
     // imprime en consola el nombre del estudiante, su matrícula, y los cursos en los que está inscrito
+    public void mostrarInformacion() {
+        String mensaje = "Estudiante {" + "\nnombre = " + nombre + "\nmatricula = " + matricula + "\ncursosInscritos = " + cursosInscritos + "\n}";
+        System.out.println(mensaje);
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" + "nombre = " + nombre + ", matricula = " + matricula + '}';
+    }
     
+    
+
 }

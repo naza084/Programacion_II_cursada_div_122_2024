@@ -18,12 +18,15 @@ Empleado
 + calcularPago(): double
 */
 public class Empleado {
+    private static int id = 1;
+    
+    protected int identificacion;
     protected String nombre;
     protected int legajo;
 
-    public Empleado(String nombre, int legajo) {
+    public Empleado(String nombre) {
         this.nombre = nombre;
-        this.legajo = legajo;
+        this.legajo = id++;
     }
 
     public String getNombre() {
@@ -42,10 +45,15 @@ public class Empleado {
         this.legajo = legajo;
     }
 
-
     @Override
     public String toString() {
-        return "Empleado {" + "nombre=" + nombre + ", legajo=" + legajo + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Empleado{");
+        sb.append("identificacion=").append(identificacion);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", legajo=").append(legajo);
+        sb.append('}');
+        return sb.toString();
     }
     
     // metodo a sobreescribir

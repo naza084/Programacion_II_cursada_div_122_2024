@@ -11,8 +11,8 @@ package models;
 public class EmpleadoSalariado  extends Empleado {
     private double salarioMensual;
 
-    public EmpleadoSalariado(double salarioMensual, String nombre, int legajo) {
-        super(nombre, legajo);
+    public EmpleadoSalariado(double salarioMensual, String nombre) {
+        super(nombre);
         this.salarioMensual = salarioMensual;
     }
     

@@ -33,7 +33,7 @@ public class Tesla extends Vehiculo implements IVehiculoElectrico {
         if (cantidad < 0) {
             throw new IllegalArgumentException("La cantidad de energia no puede ser negativa.");
         }
-        this.nivelBateria = Math.min(100, this.nivelBateria - cantidad);
+        this.nivelBateria = Math.min(100, this.nivelBateria + cantidad);
     }
 
     @Override

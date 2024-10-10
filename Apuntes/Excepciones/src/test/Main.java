@@ -4,7 +4,9 @@
  */
 package test;
 
-import model.Persona;
+import models.FondosInsuficientesException;
+import models.Pago;
+import models.Persona;
 
 /**
  *
@@ -17,19 +19,35 @@ public class Main {
      */
     public static void main(String[] args) {
         
+        /* try catch 
         try {
             Persona persona = new Persona("dsad");
             persona.setNombre("pepito");
             persona.setNombre("monica");
             int das = 20/0;
         } catch (IllegalArgumentException e) {
-            System.out.println("error de pepito."+ e.getMessage());
+            System.out.println(e.getMessage());
         } catch(Exception e){
             System.out.println(e.getMessage());
         } finally {
             System.out.println("esto se ejecuta siempre.");
         } 
+        */
         
+        // Try catch con excepcion personalizada
+        Pago pago = new Pago(500, "santander");
+        try {
+            pago.procesarPago(5000);
+        } catch (FondosInsuficientesException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());  
+        } finally {
+            System.out.println(pago);
+        }
+        
+        // IllegalArgumentException argumentException = new IllegalArgumentException("El argumento es invalido");
+        // throw argumentException;
        
     }
 }

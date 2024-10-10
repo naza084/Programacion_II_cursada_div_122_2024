@@ -20,7 +20,6 @@ public class Main {
         Tesla tesla = new Tesla("Marca S", "das");
         ScooterElectrico scooter = new ScooterElectrico("Marca A", "das");
         try {
-            // TODO: VER LA LOGICA DEL MATH MIN EN SCOOTER Y TESLA PORQUE NO FUNCIONA
             tesla.cargarBateria(42);
             scooter.cargarBateria(-42);
         } catch (IllegalArgumentException e) {

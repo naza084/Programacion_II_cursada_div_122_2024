@@ -6,8 +6,7 @@ package test;
 
 import java.time.LocalDate;
 import java.time.Month;
-import models.Empleado;
-import models.Persona;
+import models.*;
 
 /**
  *
@@ -29,5 +28,12 @@ public class Main {
         Persona p = new Persona("d", "d", 0, 0, LocalDate.MIN) {
         };
         p.calcularEdad(LocalDate.EPOCH);
+        
+        // Se puede hacer referencia a una interfaz con una instancia de un objeto que la implemente
+        IVehiculo auto = new Auto();
+        IVehiculo camion = new Camion();
+        
+        Arrancador.arrancarMotor(auto);
+        Arrancador.arrancarMotor(camion);
     }
 }

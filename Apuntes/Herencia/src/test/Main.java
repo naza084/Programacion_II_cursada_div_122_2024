@@ -22,9 +22,9 @@ public class Main {
         ArrayList<Empleado> empleados = new ArrayList<>();
 
         // Herencia
-        Empleado empleado1 = new Empleado("naza", 240);
-        EmpleadoSalariado empleado2 = new EmpleadoSalariado(25, "enki", 54);
-        EmpleadoPorHora empleado3 = new EmpleadoPorHora(4, 6, "zada", 74);
+        Empleado empleado1 = new Empleado("naza");
+        EmpleadoSalariado empleado2 = new EmpleadoSalariado(25, "enki");
+        EmpleadoPorHora empleado3 = new EmpleadoPorHora(4, 6, "zada");
 
         empleados.add(empleado1);
         empleados.add(empleado2);

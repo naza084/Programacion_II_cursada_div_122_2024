@@ -20,11 +20,11 @@ public class Main {
         ArrayList<String> participantes = new ArrayList<>();
         
         participantes.add("marcos");
+        participantes.add("enzo");
         participantes.add("marcos");
         participantes.add("marcos");
         participantes.add("lalo");
         participantes.add("naza");
-        participantes.add("enzo");
         participantes.add("seba");
         
         String personaABuscar1 = "marcos";
@@ -36,10 +36,15 @@ public class Main {
             participantes.add(personaABuscar2);
         }
         
-        
         buscarPrimeraPosicion(personaABuscar1, participantes);
         buscaUltimaPosicion(personaABuscar1, participantes);
         
+        List<String> sublista = hacerSubLista(participantes, 0, 3);
+        
+        System.out.println(sublista);
+        
+        borrarDuplicados(participantes);
+        System.out.println(participantes);
     }
     
     public static void buscarPrimeraPosicion(String participante, ArrayList<String> lista){
@@ -59,14 +64,17 @@ public class Main {
             throw new IllegalAccessError("No se puede hacer la sublista.");
         }
         
-        List<String> subLista = lista.subList(minimo, minimo);
+        List<String> subLista = lista.subList(minimo, maximo);
         return subLista;
     }
     
-    public static void borrarDuplicados(int minimo, int maximo){
+    public static void borrarDuplicados(ArrayList<String> lista){
+        List<String> copia = new ArrayList<>(lista);
         
+        for (String elemento : copia) {
+            if (copia.indexOf(elemento) != copia.lastIndexOf(elemento)) {
+                lista.remove(elemento);
+            }
+        }
     }
-    
-    
-    
 }

@@ -18,6 +18,7 @@ public class Sistema {
         listaMercancias = new ArrayList<>();
     }
 
+    
     public Mercancia traerMercancia(String codMercancia) {
         Mercancia mercancia = null;
 
@@ -48,6 +49,7 @@ public class Sistema {
         return listaRetorno;
     }
 
+    
     public boolean agregarProducto(String codMercancia, String nombreProducto, double precioProducto, double porcentajeDescuento, boolean esDescuentoEn2daUnidad) throws CodigoInvalidoException {
         if (traerMercancia(codMercancia) != null) {  
             throw new CodigoInvalidoException("Ya existe un producto con el mismo código.");
@@ -59,6 +61,7 @@ public class Sistema {
         return true;
     }
 
+    
     public boolean agregarServicio(String codMercancia, String nombreServicio, double presupuesto, double porcentajeDescuento, boolean enPromocion) throws CodigoInvalidoException {
         if (traerMercancia(codMercancia) != null) {  
             throw new CodigoInvalidoException("Ya existe un servicio con el mismo código.");

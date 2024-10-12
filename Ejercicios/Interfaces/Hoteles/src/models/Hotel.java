@@ -22,11 +22,9 @@ Hotel
 + realizarReserva(nombreCliente: String, nroNoches: int, tipoHabitacion: String, desayunoIncluido: bool): bool
 */
 public class Hotel implements IReservable{
-
     private HashMap<String, Integer> reservas;
     private ArrayList<Habitacion> habitaciones;
 
-    
     public Hotel() {
         reservas = new HashMap<>();
         habitaciones = new ArrayList<>();
@@ -34,32 +32,65 @@ public class Hotel implements IReservable{
     
     @Override
     public boolean realizarReserva(String nombreCliente, int nroNoches) throws ReservaInvalidaException{
-        if (nroNoches <= 0) {
-            throw new ReservaInvalidaException("El numero de noche tiene que ser mayor a 0.");
-        }
+        validarNoches(nroNoches);
+        registrarReserva(nombreCliente, nroNoches);
         
-        reservas.put(nombreCliente, nroNoches);
         return true;
     }
 
-    // TODO: desarrollar los metodos de abajo y hacer pruebas
-    // luego ir al todo de notifiaciones
-    // VER LO QUE ME PASO CHAT GPT DE VARIABLES DE INTERFACES Y ESTRUCTURA DE CARPETAS PARA EXCEPCIONES
+   
     @Override
     public boolean cancelarReserva(String nombreCliente) throws ReservaNoExistenteException{
+        if (!reservas.containsKey(nombreCliente)) {
+            throw new ReservaNoExistenteException("No existe la reserva para cancelar");
+        }
+        
+        reservas.remove(nombreCliente);
         return true;
     }
     
     
     // realizarReserva(nombreCliente: String, nroNoches: int, tipoHabitacion: String): bool
-    public boolean realizarReserva(String nombreCliente, int nroNoches, String tipoHabitacion) {
-        return false;
+    public boolean realizarReserva(String nombreCliente, int nroNoches, String tipoHabitacion) throws ReservaInvalidaException {
+        validarNoches(nroNoches);
+        registrarReserva(nombreCliente, nroNoches);
+        
+        Habitacion habitacion = new Habitacion(tipoHabitacion);
+        habitaciones.add(habitacion);
+        return true;
+    }
+
+    // realizarReserva(nombreCliente: String, nroNoches: int, tipoHabitacion: String, desayunoIncluido: bool): bool
+    public boolean realizarReserva(String nombreCliente, int nroNoches, String tipoHabitacion, boolean desayunoIncluido) throws ReservaInvalidaException {
+        validarNoches(nroNoches);
+        registrarReserva(nombreCliente, nroNoches);
+        
+        Habitacion habitacion = new Habitacion(tipoHabitacion, desayunoIncluido);
+        habitaciones.add(habitacion);
+        return true;
+    }
+
+    
+    // Métodos auxiliares
+    private void validarNoches(int nroNoches) throws ReservaInvalidaException {
+        if (nroNoches <= 0) {
+            throw new ReservaInvalidaException("El número de noches debe ser mayor a 0.");
+        }
+    }
+    private void registrarReserva(String nombreCliente, int nroNoches) {
+        reservas.put(nombreCliente, nroNoches);
     }
     
     
-    // realizarReserva(nombreCliente: String, nroNoches: int, tipoHabitacion: String, desayunoIncluido: bool): bool
-    public boolean realizarReserva(String nombreCliente, int nroNoches, String tipoHabitacion, boolean desayunoIncluido) {
-        return true;
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Hotel{");
+        sb.append("reservas=").append(reservas);
+        sb.append(", habitaciones=").append(habitaciones);
+        sb.append('}');
+        return sb.toString();
     }
     
     

@@ -29,4 +29,15 @@ public class Habitacion {
         this(tipoHabitacion);
         this.desayunoIncluido = desayunoIncluido;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Habitacion{");
+        sb.append("tipoHabitacion=").append(tipoHabitacion);
+        sb.append(", desayunoIncluido=").append(desayunoIncluido);
+        sb.append('}');
+        return sb.toString();
+    }
+    
 }

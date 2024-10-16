@@ -4,6 +4,7 @@
  */
 package test;
 
+import models.Amigo;
 import models.Publicacion;
 import models.Usuario;
 
@@ -18,7 +19,8 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Usuario usuario1 = new Usuario("naza", "naza039", "intento de programador.");
+        Usuario usuario1 = new Usuario("naza", "naza039", "programador.");
+        Usuario usuario2 = new Usuario("ayana", "kario3", "programadora");
         System.out.println(usuario1);
         
         Publicacion publicacion1 = usuario1.publicarActualizacion("primera publi");
@@ -29,6 +31,10 @@ public class Main {
         publicacion1.recibirComentario("suiza");
         publicacion1.mostrarComentarios();
         
-       
+        Amigo amigo1 = new Amigo(usuario1);
+        Amigo amigo2 = new Amigo(usuario2);
+        
+        amigo1.gestionarSolicitudAmistad(usuario2);
+        amigo2.gestionarSolicitudAmistad(usuario1);
     }
 }

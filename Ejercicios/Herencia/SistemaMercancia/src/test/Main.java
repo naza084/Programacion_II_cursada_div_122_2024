@@ -102,11 +102,17 @@ public class Main {
             System.out.println(e.getMessage());
         }
         
+        
         System.out.println("Test 3-3: ");
-        ArrayList<Mercancia> mercanciaEnOferta = sistema.traerMercancia(true);
-        for (Mercancia mercancia : mercanciaEnOferta) {
-            System.out.println(mercancia);
+        try {
+            ArrayList<Mercancia> mercanciaEnOferta = sistema.traerMercancia(true);
+            for (Mercancia mercancia : mercanciaEnOferta) {
+                System.out.println(mercancia);
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
+        
         
         System.out.println("Ejercicio terminado.");
     }

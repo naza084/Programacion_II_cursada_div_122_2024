@@ -35,7 +35,7 @@ public class Sistema {
     }
 
     
-    public ArrayList<Mercancia> traerMercancia(boolean enOferta) {
+    public ArrayList<Mercancia> traerMercancia(boolean enOferta) throws IllegalArgumentException{
         ArrayList<Mercancia> listaRetorno = new ArrayList<>();
 
         if (!this.listaMercancias.isEmpty()) {
@@ -74,19 +74,13 @@ public class Sistema {
     }
 
     // Metodo auxiliar
-    private boolean esMercanciaEnOferta(Mercancia mer) {
-        boolean mercanciaEnOferta = false;
-
-        switch (mer) {
-            case Producto producto ->
-                mercanciaEnOferta = producto.isEsDescuentoEn2daUnidad();
-            case Servicio servicio ->
-                mercanciaEnOferta = servicio.isEnPromocion();
-            default -> {
-            }
-        }
-
-        return mercanciaEnOferta;
+    private boolean esMercanciaEnOferta(Mercancia mer) throws IllegalArgumentException{
+        return switch (mer) {
+            case Producto producto -> producto.isEsDescuentoEn2daUnidad();
+            case Servicio servicio -> servicio.isEnPromocion();
+            default -> 
+                throw new IllegalArgumentException("Tipo de mercancía no soportado: " + mer.getClass().getSimpleName());
+        };
     }
 
     

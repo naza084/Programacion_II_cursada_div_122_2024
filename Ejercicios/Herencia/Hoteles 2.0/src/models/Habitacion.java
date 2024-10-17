@@ -9,35 +9,28 @@ package models;
  * @author PC
  */
 public abstract class Habitacion {
-    protected String codigoHabitacion;
+    protected final String codigoHabitacion;
     protected boolean estaOcupada;
-    protected double precioPorNoche;
+    protected final double precioPorNoche;
 
     public Habitacion(String codigoHabitacion, boolean estaOcupada, double precioPorNoche) throws IllegalArgumentException {
-        setCodigoHabitacion(codigoHabitacion);
-        this.estaOcupada = estaOcupada;
-        setPrecioPorNoche(precioPorNoche);
-    }
-
-    
-    public void setCodigoHabitacion(String codigoHabitacion) throws IllegalArgumentException {
         if (codigoHabitacion.length() != 5) {
             throw new IllegalArgumentException("El codigo de habitacion debe contener 5 caracteres exactos.");
         }
         this.codigoHabitacion = codigoHabitacion;
+        
+        this.estaOcupada = estaOcupada;
+
+        if (precioPorNoche < 1.0) {
+            throw new IllegalArgumentException("El precio por noche no puede ser negativo o 0.");
+        }
+        this.precioPorNoche = precioPorNoche;
     }
 
     public void setEstaOcupada(boolean estaOcupada) {
         this.estaOcupada = estaOcupada;
     }
-
-    public void setPrecioPorNoche(double precioPorNoche) throws IllegalArgumentException {
-        if (precioPorNoche < 1.0) {
-            throw new IllegalArgumentException("El precio por noche no puede ser negativo");
-        }
-        this.precioPorNoche = precioPorNoche;
-    }
-
+    
     public String getCodigoHabitacion() {
         return codigoHabitacion;
     }

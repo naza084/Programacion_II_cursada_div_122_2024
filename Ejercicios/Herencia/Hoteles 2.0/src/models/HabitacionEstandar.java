@@ -9,15 +9,14 @@ package models;
  * @author PC
  */
 public class HabitacionEstandar extends Habitacion {
+
     private boolean limpiezaIncluida;
-    private double costoLimpieza;
+    private final double costoLimpieza;
 
     public HabitacionEstandar(boolean limpiezaIncluida, double costoLimpieza, String codigoHabitacion, boolean estaOcupada, double precioPorNoche) throws IllegalArgumentException {
         super(codigoHabitacion, estaOcupada, precioPorNoche);
         this.limpiezaIncluida = limpiezaIncluida;
-        // TODO: consultar con chat gpt como puedo mejorar lo de abajo, si pongo el set
-        // tengo un problema y es que el constructor de habitacion estandar queda con ese set metido
-        // TODO: despues de esto hacer los ejercicios de logica que me dio chat gpt, luego ir al main de hotel 2.0
+
         if (costoLimpieza < 1.0) {
             throw new IllegalArgumentException("El precio de la limpieza no puede ser negativo.");
         }
@@ -28,13 +27,6 @@ public class HabitacionEstandar extends Habitacion {
         this.limpiezaIncluida = limpiezaIncluida;
     }
 
-    public void setCostoLimpieza(double costoLimpieza) throws IllegalArgumentException {
-        if (costoLimpieza < 1.0) {
-            throw new IllegalArgumentException("El precio de la limpieza no puede ser negativo.");
-        }
-        this.costoLimpieza = costoLimpieza;
-    }
-
     public boolean isLimpiezaIncluida() {
         return limpiezaIncluida;
     }
@@ -42,17 +34,29 @@ public class HabitacionEstandar extends Habitacion {
     public double getCostoLimpieza() {
         return costoLimpieza;
     }
-    
-    
+
     @Override
     public double calcularPrecioTotal(int dias) {
         double precioTotal = precioPorNoche * dias;
-        
+
         if (limpiezaIncluida) {
             precioTotal += costoLimpieza;
         }
-        
+
         return precioTotal;
     }
-    
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("HabitacionEstandar {");
+        sb.append("codigoHabitacion=").append(codigoHabitacion);
+        sb.append(", estaOcupada=").append(estaOcupada);
+        sb.append(", precioPorNoche=").append(precioPorNoche);
+        sb.append(", limpiezaIncluida=").append(limpiezaIncluida);
+        sb.append(", costoLimpieza=").append(costoLimpieza);
+        sb.append('}');
+        return sb.toString();
+    }
+
 }

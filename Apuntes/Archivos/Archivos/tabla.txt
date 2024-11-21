@@ -1,0 +1,5 @@
+Nombre    Edad      
+--------------------
+Ana        27        
+Juan       25        
+Nazareno   26        

@@ -5,13 +5,15 @@
 package test;
 
 import model.Caja;
+import model.Producto;
+import model.Repositorio;
 
 /**
  *
  * @author PC
  */
 public class Main {
-
+    
     /**
      * @param args the command line arguments
      */
@@ -36,6 +38,13 @@ public class Main {
         
         System.out.println(caja3.getContenido());
         
+        
+        Producto producto1 = new Producto("Coca", 250);
+        
+        Repositorio<Producto> productos = new Repositorio<>();
+        productos.agregarElemento(producto1);
+        
+        System.out.println(productos.obtener(0));
+        
     }
-    
 }
